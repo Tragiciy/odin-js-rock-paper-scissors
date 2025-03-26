@@ -2,7 +2,7 @@ function getComputerChoice() {
     let random = Math.random()
     if (random < 0.33) {
         return "Rock"
-    } else if (random >0.33 && random < 0.66) {
+    } else if (random < 0.66) {
         return "Paper"
     } else {
         return "Scissors"
@@ -14,12 +14,8 @@ console.log(getComputerChoice())
 function getHumanChoice () {
     return prompt("Choose Rock, Paper, Scissors");
 }
-
 let humanScore = 0;
 let computerScore = 0;
-
-let humanChoice = getHumanChoice().toUpperCase();
-let computerChoice = getComputerChoice().toUpperCase();
 
 function playRound (humanChoice, computerChoice) {
 
@@ -50,4 +46,20 @@ function playRound (humanChoice, computerChoice) {
     }
 }
 
-playRound(humanChoice, computerChoice);
+function playGame () {
+
+
+    for (let i = 0; i < 5; i++) {
+        const humanChoice = getHumanChoice().toUpperCase();
+        const computerChoice = getComputerChoice().toUpperCase();
+        console.log(humanChoice, "vs", computerChoice);
+        playRound(humanChoice, computerChoice);
+    }
+    if (humanScore > computerScore) {
+        console.log("You Win!", humanScore, ":", computerScore);
+    } else {
+        console.log("You Loose!", humanScore, ":", computerScore);
+    }
+}
+
+playGame()
